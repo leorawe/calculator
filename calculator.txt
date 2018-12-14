@@ -1,0 +1,3 @@
+- finish designing calculator
+- look up on click and other javascript needed
+- write up a list of what needs to get done
