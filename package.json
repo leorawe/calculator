@@ -1,0 +1,27 @@
+{
+  "name": "calculator-app",
+  "version": "1.0.0",
+  "description": "built in vanilla JS, prep for later doing one in React",
+  "main": "app.js",
+  "dependencies": {
+    "gulp-sass": "^4.0.2",
+    "gulp": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leorawe/calculator.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Leora Wenger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leorawe/calculator/issues"
+  },
+  "homepage": "https://github.com/leorawe/calculator#readme"
+}
