@@ -52,8 +52,10 @@ for (let i = 0; i < myButtons.length; i++) {
                 if(isFinite(result)){
                   screen.innerHTML = result;
                  }
-                else screen.innerHTML = "N/A";
+                else screen.innerHTML = "N/A"; //no dividing by zero
                 }    
+                op = "";
+                num = "";
         }    
     }, false);
   }
@@ -82,7 +84,7 @@ function doOperators(myOp){
 }
 
     function doOperation(myNum, myOp){
-        console.log(myNum, num);
+        console.log(num);
         let answer = "";
         switch(myOp){
             case '+':
