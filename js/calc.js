@@ -12,9 +12,9 @@ const el = document.getElementById("calc");
 
 
 for (let i = 0; i < myButtons.length; i++) {
-    console.log(myButtons[i].innerHTML);
-    myButtons[i].addEventListener("click", function(event){;
-        console.log(event.target);
+    //console.log(myButtons[i].innerHTML);
+    myButtons[i].addEventListener("click", function(){;
+        console.log(myButtons[i].innerHTML);
     }, false);
   }
 
