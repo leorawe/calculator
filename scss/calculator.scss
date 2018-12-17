@@ -104,5 +104,9 @@ body, html {
       background: $eval;
       color: darken($font-color, 50%);
     }
+    &:hover {
+      color: yellow;
+      cursor: pointer;
+    }
   }
 }
