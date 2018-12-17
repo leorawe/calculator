@@ -5,8 +5,10 @@ const myButtons = document.querySelectorAll('span');
 
 const screen = document.querySelector(".screen");
 var num = ""; //string until used
+var num2 = "";
 var op = "";
 var result = 0;
+screen.innerHTML = 0;
 
 const el = document.getElementById("calc");
 
@@ -29,39 +31,45 @@ for (let i = 0; i < myButtons.length; i++) {
          }
         else { 
         if((myButtons[i].className != "operator") && (myButtons[i].className != "equals")){
-            
+            console.log('num is ',  typeof(num));
+            let newNum = num + myButtons[i].innerHTML;
+            let newNum2 = num2 + myButtons[i].innerHTML;
             if(op===""){
-            screen.innerHTML = num + myButtons[i].innerHTML;
-            //num = parseInt(myButtons[i].innerHTML);
-            num = num + myButtons[i].innerHTML;
-            //console.log(num);
+                screen.innerHTML = newNum;
+                num = newNum;
+                console.log("new num is", newNum);
             }
             else {
-                //do the operation
-                result = doOperation(myButtons[i].innerHTML, op);
-                //let result = parseInt(num) + parseInt(myButtons[i].innerHTML);
-                screen.innerHTML = myButtons[i].innerHTML;
+                //do the operation - here? or no?
+                console.log("new num is", newNum2);
+                result = doOperation(newNum2, op);
+                //let result = parseFloat(num) + parseFloat(myButtons[i].innerHTML);
+                screen.innerHTML = newNum2;
+                num2 = newNum2;
+               // screen.innerHTML = myButtons[i].innerHTML;
             }
         }
 
         if(myButtons[i].className === "operator"){
-            op = doOperators(myButtons[i].innerHTML);
+            op = getOperator(myButtons[i].innerHTML);
             }
 
         if(myButtons[i].className === "equals"){
                 if(isFinite(result)){
+                    console.log("num is", num);  
+                    console.log("result is", result);  
                   screen.innerHTML = result;
                  }
                 else screen.innerHTML = "N/A"; //no dividing by zero
                 }    
-                op = "";
-                num = "";
+               // op = "";
+              //  num = "";
         }    
     }, false);
   }
 
 
-function doOperators(myOp){
+function getOperator(myOp){
     console.log(myOp);
     let theOp = "";
     switch(myOp){
@@ -88,21 +96,20 @@ function doOperators(myOp){
         let answer = "";
         switch(myOp){
             case '+':
-                answer = parseInt(num) + parseInt(myNum);
-                num = answer;
-                console.log(answer);
+                answer = parseFloat(num) + parseFloat(myNum);
+                console.log('answer is', answer.toFixed(4));
                 break;
             case '-':
-                answer = parseInt(num) - parseInt(myNum);
-                num = answer;
+                answer = parseFloat(num) - parseFloat(myNum);
+
                 break;
             case '/':
-                answer = parseInt(num) / parseInt(myNum);
-                num = answer;
+                answer = parseFloat(num) / parseFloat(myNum);
+
                 break;
             case '*':
-                answer = parseInt(num) * parseInt(myNum);
-                num = answer;
+                answer = parseFloat(num) * parseFloat(myNum);
+
                 console.log(num);
                 break;
             case '=':

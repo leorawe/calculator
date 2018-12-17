@@ -38,6 +38,9 @@ body, html {
     height: 52px;
     line-height: 55px;
     text-align: center; }
+    .top-bar .clear:hover {
+      color: yellow;
+      cursor: pointer; }
   .top-bar .screen {
     background: #708090;
     border-radius: 10px;
@@ -72,8 +75,8 @@ body, html {
       background: #ffd166;
       color: #7d7d7d; }
     .keys span.equals {
-      box-shadow: 0 4px 1px #048c68;
-      background: #06d6a0;
+      box-shadow: 0 4px 1px #21875d;
+      background: #30c487;
       color: #7d7d7d; }
     .keys span:hover {
       color: yellow;

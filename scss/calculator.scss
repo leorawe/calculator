@@ -1,6 +1,6 @@
 $bg: #829fc2;
 $button: #0b5ca8;
-$eval: #06d6a0;
+$eval: #30c487;
 $op: #ffd166;
 $calculator: #c30000;
 $radius: 10px;
@@ -59,6 +59,10 @@ body, html {
     height: $ht;
     line-height: $lineht;
     text-align: center;
+    &:hover {
+      color: yellow;
+      cursor: pointer;
+    }
   }
 
   .screen {
