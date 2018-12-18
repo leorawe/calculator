@@ -1,4 +1,4 @@
-### Calculator - vanilla Javascript version
+### Calculator - Vanilla JavaScript Version
 This calculator has buttons via vanilla JavaScript.  It also has scss - used gulp to do the sass.  
 
 ## DEMO  
