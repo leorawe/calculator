@@ -111,19 +111,20 @@ function doOperation(arr){
      let n1 = "", n2 = "";
 
      let opReached = false;
-     for(let i=0; i < arr.length; i++){
-         if((arr[i] != op) && (opReached === false))
-           {n1 = n1 + arr[i];}
+     arr.map(function(item){
+        if((item != op) && (opReached === false))
+           {n1 = n1 + item;}
          else {
-             if(arr[i]===op)
+             if(item===op)
              //start n2
              opReached = true;
              
              else {
-                 n2 = n2 + arr[i];
+                 n2 = n2 + item;
                 }
-         }
-     }
+            }        
+    });
+   
         console.log("n1 is ", n1);
         console.log("nu2 is ", n2);
         console.log("op is ", op);
