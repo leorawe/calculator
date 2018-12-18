@@ -5,10 +5,8 @@ const myButtons = document.querySelectorAll('span');
 
 const screen = document.querySelector(".screen");
 let entries = [];
-var num = ""; //string until used
-var num2 = "";
-var op = "";
-var result = 0;
+let op = "";
+
 screen.innerHTML = 0;
 
 const el = document.getElementById("calc");
@@ -27,8 +25,8 @@ for (let i = 0; i < myButtons.length; i++) {
        // console.log(myButtons[i].className);
        if(myButtons[i].className === "clear"){
             screen.innerHTML = 0;
-            num = "";
-            num2 = "";
+            // num = "";
+            // num2 = "";
             op = "";
             entries = [];
          }
@@ -50,7 +48,7 @@ for (let i = 0; i < myButtons.length; i++) {
             console.log(result);
                 if(isFinite(result)){
                     // console.log("num is", num);  
-                     console.log("result is", result);  
+                    // console.log("result is", result);  
                      console.log("result type is", typeof(result));  
                   screen.innerHTML = result.toFixed(2).replace(/\.?0*$/g,'');
                  }
