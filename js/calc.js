@@ -16,31 +16,29 @@ screen.innerHTML = 0;
 // });
 
 
-for (let i = 0; i < myButtons.length; i++) {
-    //console.log(myButtons[i].innerHTML);
- 
-    myButtons[i].addEventListener("click", function(){;
-        //console.log(myButtons[i].innerHTML);
-       // console.log(myButtons[i].className);
-       if(myButtons[i].className === "clear"){
+myButtons.forEach(function(butt){
+    butt.addEventListener("click", function(){;
+        //console.log(butt.innerHTML);
+       // console.log(butt.className);
+       if(butt.className === "clear"){
             screen.innerHTML = 0;
             //reset global variables
             reset();
          }
         else { 
-        if((myButtons[i].className != "operator") && (myButtons[i].className != "equals")){
+        if((butt.className != "operator") && (butt.className != "equals")){
             //console.log('num is ',  typeof(num));
-            entries.push(myButtons[i].innerHTML);
+            entries.push(butt.innerHTML);
             screen.innerHTML = doScr(entries);
  
         }
 
-        if(myButtons[i].className === "operator"){
-            op = getOperator(myButtons[i].innerHTML);
-            entries.push(myButtons[i].innerHTML);
+        if(butt.className === "operator"){
+            op = getOperator(butt.innerHTML);
+            entries.push(butt.innerHTML);
             }
 
-        if(myButtons[i].className === "equals"){
+        if(butt.className === "equals"){
             console.log("entries is", entries);
             if(result != "")
                { 
@@ -70,7 +68,7 @@ for (let i = 0; i < myButtons.length; i++) {
                 
         }    
     }, false);
-  }
+  });
 
 
 function getOperator(myOp){
