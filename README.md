@@ -1,4 +1,8 @@
 ### Calculator - vanilla Javascript version
-This calculator will have working buttons via vanilla JavaScript.  Right now it is just CSS (or scss to be precise).  
+This calculator has buttons via vanilla JavaScript.  It also has scss - used gulp to do the sass.  
 
+## DEMO  
+See [calculator demo on CodePen](https://codepen.io/leoraw/pen/ebdzwE).   
+
+----------------------------------
 Future plans may be React version.
