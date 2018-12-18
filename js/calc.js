@@ -33,7 +33,9 @@ for (let i = 0; i < myButtons.length; i++) {
         if((myButtons[i].className != "operator") && (myButtons[i].className != "equals")){
             //console.log('num is ',  typeof(num));
             entries.push(myButtons[i].innerHTML);
-            screen.innerHTML = doScreen(entries);
+            if(result === "")
+                {screen.innerHTML = doScr(entries);}
+            else {screen.innerHTML = doScr(entries);}    
         }
 
         if(myButtons[i].className === "operator"){
@@ -97,7 +99,9 @@ function doOp(arr) {
     //old result needs to go on beginning of array
     list.unshift(result);
     console.log ("list is", list);
-    let answer = calculate(list[0], list[2], list[1]);
+    //sometimes it has more than 3 items in the list
+    //let answer = calculate(list[0], list[2], list[1]);
+    let answer = doOperation(list);
     return answer;
 }
 
@@ -158,6 +162,14 @@ function doOperation(arr){
      return answer;   
     }   
 
+    function doScr(arr){
+            let myIndex = arr.lastIndexOf(op);
+            let list = arr.slice(myIndex + 1, arr.length);
+            console.log(list);
+            console.log(list.join(''));
+            return list.join('');
+    }
+
     function doScreen(arr){
         let opReached = false;
         let myNum = "";
@@ -179,27 +191,27 @@ function doOperation(arr){
          return myNum;
     }     
 
-    function containsOp(numstr){
-        console.log("true or false? +", numstr.includes("+"));
-        if(numstr.includes("+"))
-            {return true;}
-        else  if(numstr.includes("/"))
-            {return true;}
-        else  if(numstr.includes("*"))
-            {return true;}
-        else  if(numstr.includes("-"))
-            {return true;}    
-        else {return false;}
-    }
+    // function containsOp(numstr){
+    //     console.log("true or false? +", numstr.includes("+"));
+    //     if(numstr.includes("+"))
+    //         {return true;}
+    //     else  if(numstr.includes("/"))
+    //         {return true;}
+    //     else  if(numstr.includes("*"))
+    //         {return true;}
+    //     else  if(numstr.includes("-"))
+    //         {return true;}    
+    //     else {return false;}
+    // }
 
-    function doParse(numstr){
-        console.log("numstr is",numstr, typeof(numstr));
-        let list = numstr.split('');
-        console.log(list.length, list);
-        if(list.length === 3){
-            console.log(list[0], list[1], list[2]);
-            let ans = calculate(list[0], list[2], list[1]);
-            return ans;
-        }
-        else { console.log(list[0], list[1], list[2]);}
-    }
+    // function doParse(numstr){
+    //     console.log("numstr is",numstr, typeof(numstr));
+    //     let list = numstr.split('');
+    //     console.log(list.length, list);
+    //     if(list.length === 3){
+    //         console.log(list[0], list[1], list[2]);
+    //         let ans = calculate(list[0], list[2], list[1]);
+    //         return ans;
+    //     }
+    //     else { console.log(list[0], list[1], list[2]);}
+    // }
