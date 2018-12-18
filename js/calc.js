@@ -1,15 +1,14 @@
-//alert('bob');
-
 const myButtons = document.querySelectorAll('span');
 //const butt = document.querySelector(".calculator");
 
 const screen = document.querySelector(".screen");
 let entries = [];
+let result = "";
 let op = "";
 
 screen.innerHTML = 0;
 
-const el = document.getElementById("calc");
+//const el = document.getElementById("calc");
 
 // el.addEventListener("mouseover", function(e){
 //     console.log('wat', e);
@@ -43,9 +42,18 @@ for (let i = 0; i < myButtons.length; i++) {
             }
 
         if(myButtons[i].className === "equals"){
-            console.log(entries);
-            let result = doOperation(entries);
+            console.log("entries is", entries);
+            if(result != "")
+               { 
+                console.log("current result is ", result);
+                console.log("op is", op);
+                //do operation on the entries after the op to get other num
+                result = doOp(entries);
+                console.log("new result is", result);
+                }
+           else{result = doOperation(entries);}
             console.log(result);
+ 
                 if(isFinite(result)){
                     // console.log("num is", num);  
                     // console.log("result is", result);  
@@ -55,6 +63,7 @@ for (let i = 0; i < myButtons.length; i++) {
                 else screen.innerHTML = "N/A"; //no dividing by zero
                 }    
                 // op = "";
+                
         }    
     }, false);
   }
@@ -82,8 +91,19 @@ function getOperator(myOp){
     return theOp;
 }
 
+function doOp(arr) {
+    let myIndex = arr.lastIndexOf(op);
+    let list = arr.slice(myIndex, arr.length);
+    //old result needs to go on beginning of array
+    list.unshift(result);
+    console.log ("list is", list);
+    let answer = calculate(list[0], list[2], list[1]);
+    return answer;
+}
+
 function doOperation(arr){
      let n1 = "", n2 = "";
+
      let opReached = false;
      for(let i=0; i < arr.length; i++){
          if((arr[i] != op) && (opReached === false))
@@ -92,15 +112,24 @@ function doOperation(arr){
              if(arr[i]===op)
              //start n2
              opReached = true;
-             else {n2 = n2 + arr[i];}
+             
+             else {
+                 n2 = n2 + arr[i];
+                }
          }
      }
-         console.log("n1 is ", n1);
+        console.log("n1 is ", n1);
         console.log("nu2 is ", n2);
         console.log("op is ", op);
-        console.log(opReached, "opReached is ");
-        if(opReached === true){
-     let ans = calculate(n1, n2, op);
+       // console.log(opReached, "opReached is ");
+        // if(opReached === true){
+        //     if(containsOp(n1)=== true){
+        //         console.log("n1 before", n1);
+        //         n1 = doParse(n1);
+        //         console.log("n1 after parse", n1);
+        //     }
+        if(opReached === true){   
+             let ans = calculate(n1, n2, op);
              return ans;  
         }      else return parseFloat(n1);
 }
@@ -149,3 +178,28 @@ function doOperation(arr){
          }
          return myNum;
     }     
+
+    function containsOp(numstr){
+        console.log("true or false? +", numstr.includes("+"));
+        if(numstr.includes("+"))
+            {return true;}
+        else  if(numstr.includes("/"))
+            {return true;}
+        else  if(numstr.includes("*"))
+            {return true;}
+        else  if(numstr.includes("-"))
+            {return true;}    
+        else {return false;}
+    }
+
+    function doParse(numstr){
+        console.log("numstr is",numstr, typeof(numstr));
+        let list = numstr.split('');
+        console.log(list.length, list);
+        if(list.length === 3){
+            console.log(list[0], list[1], list[2]);
+            let ans = calculate(list[0], list[2], list[1]);
+            return ans;
+        }
+        else { console.log(list[0], list[1], list[2]);}
+    }
