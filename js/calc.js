@@ -24,18 +24,15 @@ for (let i = 0; i < myButtons.length; i++) {
        // console.log(myButtons[i].className);
        if(myButtons[i].className === "clear"){
             screen.innerHTML = 0;
-            // num = "";
-            // num2 = "";
-            op = "";
-            entries = [];
+            //reset global variables
+            reset();
          }
         else { 
         if((myButtons[i].className != "operator") && (myButtons[i].className != "equals")){
             //console.log('num is ',  typeof(num));
             entries.push(myButtons[i].innerHTML);
-            if(result === "")
-                {screen.innerHTML = doScr(entries);}
-            else {screen.innerHTML = doScr(entries);}    
+            screen.innerHTML = doScr(entries);
+ 
         }
 
         if(myButtons[i].className === "operator"){
@@ -62,7 +59,12 @@ for (let i = 0; i < myButtons.length; i++) {
                      console.log("result type is", typeof(result));  
                   screen.innerHTML = result.toFixed(2).replace(/\.?0*$/g,'');
                  }
-                else screen.innerHTML = "N/A"; //no dividing by zero
+                else {
+                    screen.innerHTML = "N/A"; //no dividing by zero
+                    //reset result if divided by zero
+                    //reset global variables
+                        reset();
+                    }
                 }    
                 // op = "";
                 
@@ -170,26 +172,32 @@ function doOperation(arr){
             return list.join('');
     }
 
-    function doScreen(arr){
-        let opReached = false;
-        let myNum = "";
-        for(let i=0; i < arr.length; i++){
-            //no operator
-            if(op === "")
-                {myNum = myNum + arr[i];}
-            else {
-                //do fooo
-                if((arr[i] === op))
-                {
-                   opReached = true;
-                }
-             else  if(opReached === true){
-                {myNum = myNum + arr[i];}
-                 }
-            }
-         }
-         return myNum;
-    }     
+    function reset(){
+                    result = "";
+                    entries = [];
+                    op = "";
+    }
+
+    // function doScreen(arr){
+    //     let opReached = false;
+    //     let myNum = "";
+    //     for(let i=0; i < arr.length; i++){
+    //         //no operator
+    //         if(op === "")
+    //             {myNum = myNum + arr[i];}
+    //         else {
+    //             //do fooo
+    //             if((arr[i] === op))
+    //             {
+    //                opReached = true;
+    //             }
+    //          else  if(opReached === true){
+    //             {myNum = myNum + arr[i];}
+    //              }
+    //         }
+    //      }
+    //      return myNum;
+    // }     
 
     // function containsOp(numstr){
     //     console.log("true or false? +", numstr.includes("+"));
