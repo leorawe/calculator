@@ -36,22 +36,7 @@ for (let i = 0; i < myButtons.length; i++) {
         if((myButtons[i].className != "operator") && (myButtons[i].className != "equals")){
             //console.log('num is ',  typeof(num));
             entries.push(myButtons[i].innerHTML);
-            screen.innerHTML = myButtons[i].innerHTML;
-        
-            // if(op===""){
-            //     screen.innerHTML = newNum;
-            //     num = newNum;
-            //     console.log("new num is", newNum);
-            // }
-            // else {
-            //     //do the operation - here? or no?
-            //     console.log("new num is", newNum2);
-            //     result = doOperation(newNum2, op);
-            //     //let result = parseFloat(num) + parseFloat(myButtons[i].innerHTML);
-            //     screen.innerHTML = newNum2;
-            //     num2 = newNum2;
-            //    // screen.innerHTML = myButtons[i].innerHTML;
-            // }
+            screen.innerHTML = doScreen(entries);
         }
 
         if(myButtons[i].className === "operator"){
@@ -62,10 +47,12 @@ for (let i = 0; i < myButtons.length; i++) {
         if(myButtons[i].className === "equals"){
             console.log(entries);
             let result = doOperation(entries);
+            console.log(result);
                 if(isFinite(result)){
                     // console.log("num is", num);  
-                    // console.log("result is", result);  
-                  screen.innerHTML = result;
+                     console.log("result is", result);  
+                     console.log("result type is", typeof(result));  
+                  screen.innerHTML = result.toFixed(2).replace(/\.?0*$/g,'');
                  }
                 else screen.innerHTML = "N/A"; //no dividing by zero
                 }    
@@ -113,8 +100,11 @@ function doOperation(arr){
          console.log("n1 is ", n1);
         console.log("nu2 is ", n2);
         console.log("op is ", op);
+        console.log(opReached, "opReached is ");
+        if(opReached === true){
      let ans = calculate(n1, n2, op);
-     return ans;
+             return ans;  
+        }      else return parseFloat(n1);
 }
     function calculate(num1, num2, op){
         console.log("num1 is ", num1);
@@ -128,7 +118,7 @@ function doOperation(arr){
                 break;
             case '-':
                 answer = parseFloat(num1) - parseFloat(num2);
-
+                //console.log(answer, " in a minus")
                 break;
             case '/':
                 answer = parseFloat(num1) / parseFloat(num2);
@@ -140,3 +130,24 @@ function doOperation(arr){
         }   
      return answer;   
     }   
+
+    function doScreen(arr){
+        let opReached = false;
+        let myNum = "";
+        for(let i=0; i < arr.length; i++){
+            //no operator
+            if(op === "")
+                {myNum = myNum + arr[i];}
+            else {
+                //do fooo
+                if((arr[i] === op))
+                {
+                   opReached = true;
+                }
+             else  if(opReached === true){
+                {myNum = myNum + arr[i];}
+                 }
+            }
+         }
+         return myNum;
+    }     
