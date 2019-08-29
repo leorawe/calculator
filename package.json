@@ -4,7 +4,7 @@
   "description": "built in vanilla JS, prep for later doing one in React",
   "main": "app.js",
   "dependencies": {
-    "gulp": "^4.0.1",
+    "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2"
   },
   "devDependencies": {},
